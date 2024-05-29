@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-Feature:
+### Feature:
 
 **As a** [role]  
 **I need** [function]  
@@ -16,7 +16,7 @@ Feature:
 ### Details and Assumptions
     * [document what you know]      
 
-Scenario 1:
+### Scenario 1:
 ### Acceptance Criteria     
     Given [some context]
     When [certain action is taken]
