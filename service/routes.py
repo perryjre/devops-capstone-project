@@ -67,7 +67,7 @@ def list_accounts():
     This endpoint will list all Accounts
     """
     app.logger.info("Request to list Accounts")
-    
+
     # use the Account.all() method to retrieve all accounts
     accounts = Account.all()
 
@@ -113,14 +113,14 @@ def update_accounts(account_id):
     This endpoint will update an Account based on the posted data
     """
     app.logger.info("Request to update an Account with id: %s", account_id)
-    
+
     # use the Account.find() method to retrieve the account by the account_id
     account = Account.find(account_id)
 
     # abort() with a status.HTTP_404_NOT_FOUND if it cannot be found
     if not account:
-        abort(status.HTTP_404_NOT_FOUND, f"Account with id [{account_id}] could not be found.")
-        
+        abort(status.HTTP_404_NOT_FOUND, f"Account with id [{account_id}] could not be found.") 
+
     # call the deserialize() method on the account passing in request.get_json()
     account.deserialize(request.get_json())
 
