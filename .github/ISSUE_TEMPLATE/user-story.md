@@ -7,6 +7,8 @@ assignees: ''
 
 ---
 
+Feature:
+
 **As a** [role]  
 **I need** [function]  
 **So that** [benefit]  
@@ -14,6 +16,7 @@ assignees: ''
 ### Details and Assumptions
     * [document what you know]      
 
+Scenario 1:
 ### Acceptance Criteria     
     Given [some context]
     When [certain action is taken]
