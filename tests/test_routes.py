@@ -25,6 +25,7 @@ HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}
 ######################################################################
 #  T E S T   C A S E S
 ######################################################################
+
 class TestAccountService(TestCase):
     """Account Service Tests"""
 
@@ -147,7 +148,7 @@ class TestAccountService(TestCase):
     def test_get_account(self):
         """It should Read a single Account"""
         account = self._create_accounts(1)[0]
-        
+
         # make a call to self.client.post() to create the account
         resp = self.client.get(
             f"{BASE_URL}/{account.id}", content_type="application/json"
@@ -175,18 +176,19 @@ class TestAccountService(TestCase):
         # create an Account to update
 
         test_account = AccountFactory()
-        
-        # send a self.client.post() request to the BASE_URL with a json payload of test_account.serialize()
+
+        # send a self.client.post() request to the
+        # BASE_URL with a json payload of test_account.serialize()
         resp = self.client.post(BASE_URL, json=test_account.serialize())
 
         # assert that the resp.status_code is status.HTTP_201_CREATED
         self.assertEqual(resp.status_code, status.HTTP_201_CREATED)
 
         # update the account
-        
+
         # get the data from resp.get_json() as new_account
         new_account = resp.get_json()
-        
+
         # change new_account["name"] to something known
         new_account["name"] = "Something Known"
 
@@ -201,7 +203,6 @@ class TestAccountService(TestCase):
 
         # assert that the updated_account["name"] is whatever you changed it to
         self.assertEqual(updated_account["name"], "Something Known")
-
 
     def test_delete_account(self):
         """It should Delete an Account"""
