@@ -219,7 +219,7 @@ class TestAccountService(TestCase):
 
         # assert that the resp.status_code is status.HTTP_405_METHOD_NOT_ALLOWED
         self.assertEqual(resp.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
-        
+
     def test_security_headers(self):
         """It should return security headers"""
         response = self.client.get('/', environ_overrides=HTTPS_ENVIRON)
@@ -232,3 +232,10 @@ class TestAccountService(TestCase):
         }
         for key, value in headers.items():
             self.assertEqual(response.headers.get(key), value)
+
+    def test_cors_security(self):
+        """It should return a CORS header"""
+        response = self.client.get('/', environ_overrides=HTTPS_ENVIRON)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        # Check for the CORS header
+        self.assertEqual(response.headers.get('Access-Control-Allow-Origin'), '*')
